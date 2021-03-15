@@ -1,0 +1,21 @@
+Package: PRECISION.array
+Type: Package
+Title: PaiREd miCrorna sImulation on Study desIgn for mOlecular
+        classificatioN
+Version: 0.1.0
+Date: 2021-3-15
+Author: Huei-Chung Huang, Li-Xuan Qin, Qihang Yang, Yilin Wu
+Maintainer: Huei-Chung Huang <hueichunghuang@gmail.com>
+Description: Allow users to reuse a unique pair of Agilent microRNA microarray datasets and to reproduce and extend the simulation studies reported in the paper at the URL below.
+License: GPL (>= 2)
+Depends: R (>= 3.5.0)
+Encoding: UTF-8
+Imports: glmnet, limma, pamr, preprocessCore, ruv, sva, vsn, e1071,
+        randomForest, HiDimDA, caret, mclust
+URL: http://clincancerres.aacrjournals.org/content/20/13/3371.long
+LazyData: TRUE
+RoxygenNote: 7.1.1
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2021-03-15 14:56:03 UTC; yangqihang
