@@ -4,6 +4,6 @@ PRECISION.array is a package which provides a pair of microRNA microarray data s
 
 ### REFERENCE
 
-[1] Qin LX, Huang HC, Begg CB. Cautionary note on cross validation in molecular classification. Journal of Clinical Oncology. 2016, http://ascopubs.org/doi/abs/10.1200/JCO.2016.68.1031.
+[1]: Qin LX, Huang HC, Begg CB. Cautionary note on cross validation in molecular classification. Journal of Clinical Oncology. 2016, http://ascopubs.org/doi/abs/10.1200/JCO.2016.68.1031.
 
 [2]: Huang HC, Qin LX. PRECISION: an R package for assessing study design and data normalization for molecular classification studies using a unique pair of microarray datasets (2016). GitHub repository, https://github.com/LXQin/PRECISION.array.
