@@ -1,6 +1,8 @@
 # PRECISION.array v0.1.0
 
 We propose a new R package PRECISION.array which provides a pipeline for data normalization, resampling based simulations and classification for microRNA microarray data. We provide three normalization methods: median normalization, quantile normalization and variance stabilizing normalization. We provide two virtual re-hybridization methods: confounding design and stratified design. And we provide seven classification methods: PAM, LASSO, ClaNC, kNN, DLDA, SVM, Random Forest.
+
+The package can be installed in R:
 ```ruby
 devtools::install_github("LXQin/PRECISION.array")
 ```
