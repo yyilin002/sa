@@ -90,7 +90,7 @@
     a.e <- cbind(handling.effect[, colnames(handling.effect) %in% amplify.array.id] + amplify.level,
                     handling.effect[, !colnames(handling.effect) %in% amplify.array.id])
   }
-  else if(type=='multiply'){
+  else if(type == "multiply"){
     a.e <- cbind(handling.effect[, colnames(handling.effect) %in% amplify.array.id]*amplify.level,
                  handling.effect[, !colnames(handling.effect) %in% amplify.array.id])
   }
