@@ -4,13 +4,13 @@
 #'
 #' @param handling.effect the estimated handling effect dataset to be modified. The dataset must have rows as probes and columns as samples.
 #' @param amplify.array.id the array IDs specified to have its handling effect amplified.
-#' If \code{type = "shift"} or \code{type = "scale1"}, a vector of array IDs must be supplied.
+#' If \code{type = "shift"} or \code{type = "scale1"} or \code{type = "multiply"}, a vector of array IDs must be supplied.
 #' If \code{type = "scale2"}, a list of vectors of array IDs must be supplied;
 #' each element in the list must be a vector of array IDs.
 #' @param amplify.level a multiplier specified to amplify handling effect by.
-#' A numeric multiplier must be supplied if \code{type = "shift"} or \code{type = "scale1"}.
+#' A numeric multiplier must be supplied if \code{type = "shift"} or \code{type = "scale1"} or \code{type = "multiply"}.
 #' A vector of multipliers must be supplied if type = "scale2" and it must have an equal length to the \code{amplify.array.id} list.
-#' @param type a choice of amplification type, either "shift", "scale1" or "scale2" for either location shift
+#' @param type a choice of amplification type, either "shift", "multiply", "scale1" or "scale2" for either location shift
 #' or scale change. By default, \code{type = "shift"}.
 #' Location shift moves the entire specified arrays up or down by a constant.
 #' Scale change 1 re-scales expressions that are in inter-quartiles towards the first and the third quartiles Within each array;
@@ -37,6 +37,11 @@
 #' handling.effect.nc.tr.shift <- amplify.handling.effect(handling.effect = handling.effect.nc.tr,
 #'                                        amplify.array.id = colnames(handling.effect.nc.tr)[1:64],
 #'                                        amplify.level = 2, type = "shift")
+#'
+#' # multiply
+#' handling.effect.nc.tr.add <- amplify.handling.effect(handling.effect = handling.effect.nc.tr,
+#'                                         amplify.array.id = colnames(handling.effect.nc.tr)[1:64],
+#'                                         amplify.level = 2, type = "multiply")
 #'
 #' # scale change 1
 #' handling.effect.nc.tr.scale1 <- amplify.handling.effect(handling.effect = handling.effect.nc.tr,
@@ -74,7 +79,7 @@
                               amplify.level,
                               type = "shift"){
 
-  stopifnot(type %in% c("shift", "scale1", "scale2"))
+  stopifnot(type %in% c("shift", "multiply", "scale1", "scale2"))
   stopifnot(unlist(amplify.array.id) %in% colnames(handling.effect))
   stopifnot(is.numeric(unlist(amplify.level)))
   if(type == "scale2") stopifnot(unlist(amplify.array.id) %in% colnames(handling.effect))
@@ -84,7 +89,13 @@
   if(type == "shift"){
     a.e <- cbind(handling.effect[, colnames(handling.effect) %in% amplify.array.id] + amplify.level,
                     handling.effect[, !colnames(handling.effect) %in% amplify.array.id])
-  } else if(type == "scale1") { # scale 1
+  }
+  else if(type=='multiply'){
+    a.e <- cbind(handling.effect[, colnames(handling.effect) %in% amplify.array.id]*amplify.level,
+                 handling.effect[, !colnames(handling.effect) %in% amplify.array.id])
+  }
+  
+  else if(type == "scale1") { # scale 1
 
     handling.effect.scaled <- handling.effect
     for(i in 1:length(amplify.array.id)) {
