@@ -38,7 +38,7 @@
   ptm <- proc.time()
   set.seed(seed)
 
-  svm_tune = tune.svm(x = data.matrix(t(X)), y = factor(y), tunecontrol = tune.control(cross = kfold))
+  svm_tune = tune.svm(x = data.matrix(t(X)), y = factor(y), tunecontrol = tune.control(cross = kfold), cost=10^(-1:2), kernel = "linear")
 
   time <- proc.time() - ptm
   return(list(mc = svm_tune$best.performance, time = time, model = svm_tune$best.model))
