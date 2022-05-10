@@ -34,17 +34,34 @@
 #'
 
 
+#"ranfor.intcv" <- function(kfold = 5, X, y, seed){
+  #ptm <- proc.time()
+  #set.seed(seed)
+
+  #forest_tune <- tuneRF(x = data.matrix(t(X)), y = factor(y), tunecontrol = tune.control(cross = kfold), doBest = TRUE)
+  #mc <- tabulate.ext.err.func(forest_tune$predicted, y)
+  #print(mc)
+
+  #time <- proc.time() - ptm
+  #return(list(mc = mc, time = time, model = forest_tune))
+#}
+
+
 "ranfor.intcv" <- function(kfold = 5, X, y, seed){
   ptm <- proc.time()
   set.seed(seed)
-
-  forest_tune <- tuneRF(x = data.matrix(t(X)), y = factor(y), tunecontrol = tune.control(cross = kfold), doBest = TRUE)
-  mc <- tabulate.ext.err.func(forest_tune$predicted, y)
-  print(mc)
-
+  
+  
+  control <- trainControl(method='cv', 
+                          number=kfold, 
+                          search = 'random')
+  
+  rf <- train(x = data.matrix(t(X)), y = factor(y),
+              method = 'rf',
+              metric = 'Accuracy',
+              tuneLength = 10,
+              trControl = control)
+  
   time <- proc.time() - ptm
-  return(list(mc = mc, time = time, model = forest_tune))
+  return(list(mc = 1 - max(rf$results$Accuracy), time = time, model = rf, cfs = NULL))
 }
-
-
-
