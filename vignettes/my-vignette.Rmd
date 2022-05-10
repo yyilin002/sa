@@ -586,6 +586,7 @@ Again, it may be necessary to manipulate the confounding level of handling effec
 
 3. scale change 2 - scaling all probe expressions in arrays by the power of constants that are different for each batch. In our training data, there are four batches.
 
+4. multiply - per selected array, multiply all probe expressions by a constant.
 
 ```{r amplify.handling.effect, fig.align = "hold", fig.width = 7, fig.height = 7}
 handling.effect.nc.tr <- handling.effect.nc[, c(1:64, 129:192)]
@@ -594,7 +595,10 @@ handling.effect.nc.tr <- handling.effect.nc[, c(1:64, 129:192)]
 handling.effect.nc.tr.shift <- amplify.handling.effect(handling.effect = handling.effect.nc.tr,
        amplify.array.id = colnames(handling.effect.nc.tr)[1:64],
        amplify.level = 2, type = "shift")
-
+# multiply
+handling.effect.nc.tr.multiply <- amplify.handling.effect(handling.effect = handling.effect.nc.tr,
+       amplify.array.id = colnames(handling.effect.nc.tr)[1:64],
+       amplify.level = 2, type = "multiply")
 # scale change 1
 handling.effect.nc.tr.scale1 <- amplify.handling.effect(handling.effect = handling.effect.nc.tr,
        amplify.array.id = colnames(handling.effect.nc.tr)[1:64],
