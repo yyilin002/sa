@@ -622,7 +622,7 @@ boxplot(handling.effect.nc.tr, main = "Original",
         ylim = rng, pch = 20, cex = 0.2, xaxt = "n")
 boxplot(handling.effect.nc.tr.shift, main = "Shift",
         ylim = rng, pch = 20, cex = 0.2, xaxt = "n")
-boxplot(handling.effect.nc.tr.multiply.shift, main = "multiply",
+boxplot(handling.effect.nc.tr.multiply, main = "multiply",
         ylim = rng, pch = 20, cex = 0.2, xaxt = "n")
 boxplot(handling.effect.nc.tr.scale1, main = "Scaling 1",
         ylim = rng, pch = 20, cex = 0.2, xaxt = "n")
