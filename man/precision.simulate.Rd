@@ -188,8 +188,8 @@ precision.results <- precision.simulate(seed = 1, N = 3,
                                         class.list = c("PAM", "LASSO"),
                                         batch.id = list(1:40,
                                                         41:64,
-                                                        (129:160) - 64,
-                                                        (161:192) - 64))
+                                                        (129:152) - 64,
+                                                        (153:192) - 64))
 
 # Simulation with RUV-4 batch adjustment
 biological.effect.ctrl <- biological.effect[rownames(biological.effect) \%in\% ctrl.genes, ]
@@ -210,8 +210,8 @@ precision.ruv4.results <- precision.simulate(seed = 1, N = 3,
                                              class.list = c("PAM", "LASSO"),
                                              batch.id = list(1:40,
                                                              41:64,
-                                                             (129:160) - 64,
-                                                             (161:192) - 64),
+                                                             (129:152) - 64,
+                                                             (153:192) - 64),
                                              iruv = TRUE,
                                              biological.effect.tr.ctrl = biological.effect.tr.ctrl,
                                              handling.effect.tr.ctrl = handling.effect.tr.ctrl)

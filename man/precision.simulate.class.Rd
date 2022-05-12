@@ -174,6 +174,9 @@ group.id <- substr(colnames(biological.effect.nc), 7, 7)
 
 # randomly split biological effect data into training and test set with
 # equal number of endometrial and ovarian samples
+
+redhalf.biological.effect.nc <- reduce.signal(biological.effect = biological.effect.nc, group.id = substr(colnames(biological.effect.nc), 7, 7),group.id.level = c("E", "V"),reduce.multiplier = 1/2)
+
 biological.effect.train.ind <- colnames(biological.effect.nc)[c(sample(which(group.id == "E"), size = 64),
                                           sample(which(group.id == "V"), size = 64))]
 biological.effect.test.ind <- colnames(biological.effect.nc)[!colnames(biological.effect.nc) \%in\% biological.effect.train.ind]

@@ -174,6 +174,9 @@ group.id <- substr(colnames(biological.effect.nc), 7, 7)
 
 # randomly split biological effect data into training and test set with
 # equal number of endometrial and ovarian samples
+
+redhalf.biological.effect.nc <- reduce.signal(biological.effect = biological.effect.nc, group.id = substr(colnames(biological.effect.nc), 7, 7),group.id.level = c("E", "V"),reduce.multiplier = 1/2)
+
 biological.effect.train.ind <- colnames(biological.effect.nc)[c(sample(which(group.id == "E"), size = 64),
                                           sample(which(group.id == "V"), size = 64))]
 biological.effect.test.ind <- colnames(biological.effect.nc)[!colnames(biological.effect.nc) \%in\% biological.effect.train.ind]
@@ -192,7 +195,7 @@ handling.effect.nc.tr <- handling.effect.nc[, c(1:64, 129:192)]
 handling.effect.nc.te <- handling.effect.nc[, 65:128]
 
 # Simulation
-precision.result = precision.simulate.multiclass(seed = 0, N = 3,
+precision.result = precision.simulate.class(seed = 0, N = 3,
                                             biological.effect.tr = biological.effect.nc.tr,
                                             biological.effect.te = biological.effect.nc.te,
                                             handling.effect.tr = handling.effect.nc.tr,
@@ -203,7 +206,7 @@ precision.result = precision.simulate.multiclass(seed = 0, N = 3,
                                             test.design.met = "STR",
                                             train.norm.met = "MN",
                                             test.norm.met = "fMN",
-                                            class.list = c("SVM", "kNN", "LASSO"),
+                                            class.met = "LASSO",
                                             train.batch.id = list(1:40, 41:64, (129:152)-64, (153:192)-64),
                                             test.batch.id = list((65:80)-64,(81:114)-64,(115:128)-64))
 

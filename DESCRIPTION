@@ -14,7 +14,7 @@ Imports: glmnet, limma, pamr, preprocessCore, ruv, sva, vsn, e1071,
         randomForest, HiDimDA, caret, mclust
 URL: http://clincancerres.aacrjournals.org/content/20/13/3371.long
 LazyData: TRUE
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
