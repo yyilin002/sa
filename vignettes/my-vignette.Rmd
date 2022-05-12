@@ -130,7 +130,7 @@ array.to.sample.assign <- list("all" = c(rep(c("E", "V"), each = 64),
 
 ```
 
-Next, for the training set, data were simulated through "virtual re-hybridization" by first assigning arrays to sample groups using a confounding design or a balanced design, and then summing the biological effect for a sample and the handling effect for its assigned array. For the test set, we used onlyt the biological effect data from the uniformly-handled dataset. Three study design functions assign arrays to samples (`confounding.design()`, `stratification.design()`, `blocking.design()`). Finally, `rehybridize()` is provided to sum biological effects to handling effects, following array-to-sample assignments. 
+Next, for the training set, data were simulated through "virtual re-hybridization" by first assigning arrays to sample groups using a confounding design or a balanced design, and then summing the biological effect for a sample and the handling effect for its assigned array. For the test set, we used only the biological effect data from the uniformly-handled dataset. Three study design functions assign arrays to samples (`confounding.design()`, `stratification.design()`, `blocking.design()`). Finally, `rehybridize()` is provided to sum biological effects to handling effects, following array-to-sample assignments. 
 
 ```{r study.design}
 # complete confounding
